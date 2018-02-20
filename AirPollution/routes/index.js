@@ -1,19 +1,46 @@
 var express = require('express');
 var router = express.Router();
+myText = "";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Pollution Levels Tracker', aqiEJStoHtml: globalaqi, barHeight: globalbarHeight });
 });
 
+//Request object from html page (index.ejs)
+var app = express();
+app.get('/', function(req, res){
+    myText = req.query.mytext; //mytext is the name of your input box
+    res.send('Your Text:' +myText);
+});
+console.log(myText);
+
+// const readline = require('readline');
+//
+// const rl = readline.createInterface({
+//     input: process.stdin,
+//     output: process.stdout
+// });
+//
+// rl.question('What do you think of Node.js? ', (answer) => {
+//     // TODO: Log the answer in a database
+//     console.log(`Thank you for your valuable feedback: ${answer}`);
+//
+// rl.close();
+// });
 
 /////////////// API request for website http://aqicn.org/api/ /////////////////////////////////////////
 var request = require('request');
 var cheerio = require('cheerio');
-global.globalaqi = "";
+globalaqi = "";
 globalbarHeight = "";
+var token = '5e3430ee03115b533faddd23e524e086e4915a74';
 
-request('https://api.waqi.info/search/?token=demo&keyword=bangalore', function(error, response, body){
+//sample url
+//https://api.waqi.info/search/?token=***REMOVED***=beijing
+//request('https://api.waqi.info/search/?token=demo&keyword=beijing', function(error, response, body){
+var keyword = "beijing"
+request('https://api.waqi.info/search/?token=***REMOVED***=' + keyword, function(error, response, body){
     if(!error && response.statusCode == 200){
         var $ = cheerio.load(body);
         //console.log(body);
@@ -31,8 +58,5 @@ request('https://api.waqi.info/search/?token=demo&keyword=bangalore', function(e
         // console.log("barheight: " + barHeight);
     }
 });
-
-
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 module.exports = router;
