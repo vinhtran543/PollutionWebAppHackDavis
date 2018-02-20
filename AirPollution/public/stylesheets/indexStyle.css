@@ -138,4 +138,10 @@ a {
     background: linear-gradient(#d67060, #cc4b37 70%);
 }
 
+ input
+ {
+     width: 100%;
+ }
+
+
 
