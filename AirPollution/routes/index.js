@@ -1,19 +1,47 @@
 var express = require('express');
 var router = express.Router();
-myText = "";
+search = "";
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Pollution Levels Tracker', aqiEJStoHtml: globalaqi, barHeight: globalbarHeight });
 });
 
-//Request object from html page (index.ejs)
+var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
-app.get('/', function(req, res){
-    myText = req.query.mytext; //mytext is the name of your input box
-    res.send('Your Text:' +myText);
+//Note that in version 4 of express, express.bodyParser() was
+//deprecated in favor of a separate 'body-parser' module.
+app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(express.bodyParser());
+app.post('/myaction', function(req, res) {
+    res.send('You sent the name "' + req.body.username + '".');
+    search = req.body.username
+    console.log("In the body of app.post()");
+    console.log("search: " + search);
 });
-console.log(myText);
+app.listen(8080, function() {
+    console.log('Server running at http://127.0.0.1:8080/');
+});
+
+// var app = express();
+// search = "";
+// console.log("HERE");
+// app.get('/', function(req, res) {
+//     console.log("HERE");
+//     res.send('Username: ' + req.query['username']);
+//     search = req.query.username;
+//     console.log(search);
+// });
+// console.log("HERE");
+
+//Request object from html page (index.ejs)
+// var app = express();
+// app.get('/', function(req, res){
+//     myText = req.query.mytext; //mytext is the name of your input box
+//     res.send('Your Text:' +myText);
+// });
+// console.log(myText);
 
 // const readline = require('readline');
 //
@@ -34,10 +62,10 @@ var request = require('request');
 var cheerio = require('cheerio');
 globalaqi = "";
 globalbarHeight = "";
-var token = '5e3430ee03115b533faddd23e524e086e4915a74';
 
 //sample url
 //https://api.waqi.info/search/?token=5e3430ee03115b533faddd23e524e086e4915a74&keyword=beijing
+//demo url
 //request('https://api.waqi.info/search/?token=demo&keyword=beijing', function(error, response, body){
 var keyword = "beijing"
 request('https://api.waqi.info/search/?token=5e3430ee03115b533faddd23e524e086e4915a74&keyword=' + keyword, function(error, response, body){
@@ -59,4 +87,5 @@ request('https://api.waqi.info/search/?token=5e3430ee03115b533faddd23e524e086e49
     }
 });
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 module.exports = router;
