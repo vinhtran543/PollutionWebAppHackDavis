@@ -7,19 +7,45 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Pollution Levels Tracker', aqiEJStoHtml: globalaqi, barHeight: globalbarHeight });
 });
 
-var express = require('express');
+//var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
+
+//Submit button was pressed
 //Note that in version 4 of express, express.bodyParser() was
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(express.bodyParser());
 app.post('/myaction', function(req, res) {
-    res.send('You sent the name "' + req.body.username + '".');
-    search = req.body.username
+    //res.send('You sent the name "' + req.body.username + '".');
+    keyword = req.body.username;
     console.log("In the body of app.post()");
-    console.log("search: " + search);
+    console.log("search: " + keyword);
+    //createbargraph(search);
+
+    request('https://api.waqi.info/search/?token=***REMOVED***=' + keyword, function(error, response, body){
+        if(!error && response.statusCode == 200){
+            var $ = cheerio.load(body);
+            //console.log(body);
+
+            var json = body;
+            console.log(json);
+            obj = JSON.parse(json);
+            var aqiVar = obj.data[0].aqi; //aqi data is at array 0 of data in JSON
+            //console.log(obj.data[0].aqi);
+            console.log(aqiVar);
+            globalaqi = aqiVar;
+            globalbarHeight = Math.round(aqiVar / 3); //divide by 3 since scale is 300% not 100% for bar graph
+
+            // globalbarHeight = globalaqi / 2;
+            // console.log("barheight: " + barHeight);
+            res.redirect("http://localhost:3000/");
+        }
+    });
+
+
 });
+
 app.listen(8080, function() {
     console.log('Server running at http://127.0.0.1:8080/');
 });
@@ -67,25 +93,29 @@ globalbarHeight = "";
 //https://api.waqi.info/search/?token=***REMOVED***=beijing
 //demo url
 //request('https://api.waqi.info/search/?token=demo&keyword=beijing', function(error, response, body){
-var keyword = "beijing"
-request('https://api.waqi.info/search/?token=***REMOVED***=' + keyword, function(error, response, body){
-    if(!error && response.statusCode == 200){
-        var $ = cheerio.load(body);
-        //console.log(body);
-
-        var json = body;
-        console.log(json);
-        obj = JSON.parse(json);
-        var aqiVar = obj.data[0].aqi; //aqi data is at array 0 of data in JSON
-        //console.log(obj.data[0].aqi);
-        console.log(aqiVar);
-        globalaqi = aqiVar;
-        globalbarHeight = Math.round(aqiVar / 3); //divide by 3 since scale is 300% not 100% for bar graph
-
-        // globalbarHeight = globalaqi / 2;
-        // console.log("barheight: " + barHeight);
-    }
-});
+// var keyword = "beijing"
+// createbargraph(keyword);
+// function createbargraph(keyword)
+// {
+//     request('https://api.waqi.info/search/?token=***REMOVED***=' + keyword, function(error, response, body){
+//         if(!error && response.statusCode == 200){
+//             var $ = cheerio.load(body);
+//             //console.log(body);
+//
+//             var json = body;
+//             console.log(json);
+//             obj = JSON.parse(json);
+//             var aqiVar = obj.data[0].aqi; //aqi data is at array 0 of data in JSON
+//             //console.log(obj.data[0].aqi);
+//             console.log(aqiVar);
+//             globalaqi = aqiVar;
+//             globalbarHeight = Math.round(aqiVar / 3); //divide by 3 since scale is 300% not 100% for bar graph
+//
+//             // globalbarHeight = globalaqi / 2;
+//             // console.log("barheight: " + barHeight);
+//         }
+//     });
+// }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 module.exports = router;
