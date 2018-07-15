@@ -88,6 +88,7 @@ a {
     opacity: 0.4;
     width: 100%;
     font-size: 1.875rem;
+    bottom: 100%;
     position: absolute;
 }
 
@@ -106,10 +107,11 @@ a {
     opacity: 0.5;
     text-transform: uppercase;
     width: 100%;
-    font-size: 14px;
+    font-size: 4px;
     bottom: 20px;
     position: absolute;
-    font-size: 1rem;
+    /*font-size: 1rem;*/
+    font-size: 10px;
     overflow: hidden;
 }
 
