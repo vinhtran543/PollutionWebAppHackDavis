@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Pollution Levels Tracker', aqiEJStoHtml: globalaqi, barHeight: globalbarHeight });
+  res.render('index', { title: 'Pollution Levels Tracker', aqiEJStoHtml: globalaqi, barHeightEJStoHtml: globalbarHeight, keywordEJStoHtml: globalKeyword });
 });
 
 var bodyParser = require('body-parser');
@@ -14,12 +14,12 @@ var app = express();
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/myaction', function(req, res) {
-    keyword = req.body.username;
+    globalKeyword = req.body.username;
     console.log("In the body of app.post()");
-    console.log("keyword search: " + keyword);
+    console.log("keyword search: " + globalKeyword);
 
     //function call to createbargraph graph and refresh page with changes
-    app.get(createbargraph(keyword, req, res));
+    app.get(createbargraph(globalKeyword, req, res));
 });
 
 app.listen(8080, function() {
@@ -36,12 +36,13 @@ globalbarHeight = "";
 //https://api.waqi.info/search/?token=5e3430ee03115b533faddd23e524e086e4915a74&keyword=beijing
 //demo url
 //request('https://api.waqi.info/search/?token=demo&keyword=beijing', function(error, response, body){
-var keyword = "beijing";
-createbargraphFirstTime(keyword);
+//var keyword = "beijing";
+globalKeyword = "beijing";
+createbargraphFirstTime(globalKeyword);
 
-function createbargraphFirstTime(keyword)
+function createbargraphFirstTime(globalKeyword)
 {
-    request('https://api.waqi.info/search/?token=5e3430ee03115b533faddd23e524e086e4915a74&keyword=' + keyword, function(error, response, body){
+    request('https://api.waqi.info/search/?token=5e3430ee03115b533faddd23e524e086e4915a74&keyword=' + globalKeyword, function(error, response, body){
         if(!error && response.statusCode == 200){
             var $ = cheerio.load(body);
             //console.log(body);
@@ -61,9 +62,9 @@ function createbargraphFirstTime(keyword)
     });
 }
 
-function createbargraph(keyword, req, res)
+function createbargraph(globalKeyword, req, res)
 {
-    request('https://api.waqi.info/search/?token=5e3430ee03115b533faddd23e524e086e4915a74&keyword=' + keyword, function(error, response, body){
+    request('https://api.waqi.info/search/?token=5e3430ee03115b533faddd23e524e086e4915a74&keyword=' + globalKeyword, function(error, response, body){
         if(!error && response.statusCode == 200){
             var $ = cheerio.load(body);
             //console.log(body);
