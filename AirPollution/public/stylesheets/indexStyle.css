@@ -110,8 +110,7 @@ a {
     font-size: 4px;
     bottom: 20px;
     position: absolute;
-    /*font-size: 1rem;*/
-    font-size: 10px;
+    font-size: 1rem;
     overflow: hidden;
 }
 

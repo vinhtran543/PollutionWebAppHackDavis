@@ -4,7 +4,6 @@
     <list default="true" id="9755a758-8323-447d-820b-29e7389e5f70" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AirPollution/public/stylesheets/indexStyle.css" afterPath="$PROJECT_DIR$/AirPollution/public/stylesheets/indexStyle.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AirPollution/routes/index.js" afterPath="$PROJECT_DIR$/AirPollution/routes/index.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AirPollution/views/index.ejs" afterPath="$PROJECT_DIR$/AirPollution/views/index.ejs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.ejs" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.ejs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AirPollution/views/index.ejs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="65" column="37" lean-forward="true" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+            <state relative-caret-position="300">
+              <caret line="45" column="28" lean-forward="false" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
               <folding>
                 <element signature="n#style#0;n#li#1;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -90,11 +89,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="indexStyle.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="indexStyle.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/AirPollution/public/stylesheets/indexStyle.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="90" column="14" lean-forward="false" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+            <state relative-caret-position="350">
+              <caret line="112" column="20" lean-forward="false" selection-start-line="112" selection-start-column="3" selection-end-line="112" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -128,8 +127,8 @@
       <find>search</find>
       <find>aqiEjstoHtml</find>
       <find>label</find>
-      <find>px</find>
       <find>%</find>
+      <find>px</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -145,8 +144,8 @@
       <list>
         <option value="$PROJECT_DIR$/AirPollution/app.js" />
         <option value="$PROJECT_DIR$/AirPollution/routes/index.js" />
-        <option value="$PROJECT_DIR$/AirPollution/views/index.ejs" />
         <option value="$PROJECT_DIR$/AirPollution/public/stylesheets/indexStyle.css" />
+        <option value="$PROJECT_DIR$/AirPollution/views/index.ejs" />
       </list>
     </option>
   </component>
@@ -371,12 +370,12 @@
       <workItem from="1527806615012" duration="8076000" />
       <workItem from="1531193855846" duration="4210000" />
       <workItem from="1531198655691" duration="8903000" />
-      <workItem from="1531629869007" duration="5307000" />
+      <workItem from="1531629869007" duration="5616000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47205000" />
+    <option name="totallyTimeSpent" value="47514000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="950" y="0" width="980" height="1030" extended-state="0" />
@@ -821,14 +820,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AirPollution/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AirPollution/routes/about.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -853,18 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AirPollution/views/index.ejs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="65" column="37" lean-forward="true" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#li#1;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AirPollution/public/stylesheets/style.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -875,9 +854,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AirPollution/public/stylesheets/indexStyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="90" column="14" lean-forward="false" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+        <state relative-caret-position="350">
+          <caret line="112" column="20" lean-forward="false" selection-start-line="112" selection-start-column="3" selection-end-line="112" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AirPollution/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AirPollution/views/index.ejs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="45" column="28" lean-forward="false" selection-start-line="45" selection-start-column="28" selection-end-line="45" selection-end-column="28" />
+          <folding>
+            <element signature="n#style#0;n#li#1;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#2;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#li#3;n#ul#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
