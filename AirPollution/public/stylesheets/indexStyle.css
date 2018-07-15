@@ -23,7 +23,8 @@ a {
 
 .bar-graph li {
     display: block;
-    padding: 1.5625rem 0;
+    /*padding: 1.5625rem 0;*/
+    padding: 0;
     position: relative;
     text-align: center;
     vertical-align: bottom;
@@ -108,7 +109,7 @@ a {
     text-transform: uppercase;
     width: 100%;
     font-size: 4px;
-    bottom: 20px;
+    bottom: -50px;
     position: absolute;
     font-size: 1rem;
     overflow: hidden;
