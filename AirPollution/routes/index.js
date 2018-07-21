@@ -14,7 +14,7 @@ var app = express();
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/myaction', function(req, res) {
-    globalKeyword = req.body.username;
+    globalKeyword = req.body.search;
     console.log("In the body of app.post()");
     console.log("keyword search: " + globalKeyword);
 

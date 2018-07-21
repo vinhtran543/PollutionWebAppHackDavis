@@ -9,38 +9,13 @@
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
 
-    <!--<p id = "demo"></p>-->
-    <!--<script>-->
-        <!--var x = <%= aqiEJStoHtml %> / 3;-->
-        <!--document.getElementById("demo").innerHTML = x;-->
-    <!--</script>-->
-
     <!--break line skip-->
     <br>
 
-    <!--<form action="/myform" method="GET">-->
-      <!--<div>-->
-        <!--<input type="search" id="mySearch" name="q"-->
-        <!--placeholder="Search a city...">-->
-        <!--<button>Search</button>-->
-      <!--</div>-->
-    <!--</form>-->
-
-    <!--<form method="GET">-->
-      <!--<input type="text" id="mySearch" name="mytext" required />-->
-      <!--<input type="submit" value="Submit" />-->
-    <!--</form>-->
-
-    <!--<form method="get" action="/">-->
-      <!--<input type="text" name="username">-->
-      <!--<input type="submit">-->
-    <!--</form>-->
-
     <form action="http://127.0.0.1:8080/myaction" method="post">
-      <input type="text" name="username">
+      <input type="text" name="search">
       <input type="submit">
     </form>
-
 
     <!--break line skip-->
     <br><br><br><br><br>
@@ -59,25 +34,32 @@
         <div class="percent"><%= aqiEJStoHtml %><span><br><%= barHeightEJStoHtml %>%</span></div>
         <div class="description"><%= globalKeyword %></div>
       </li>
-      <li class="bar secondary" style="height: 90%;" title="90">
-        <div class="percent">90<span>%</span></div>
-        <div class="description">ZURBians</div>
-      </li>
-      <li class="bar success" style="height: 80%;" title="80">
-        <div class="percent">80<span>%</span></div>
-        <div class="description">Cows</div>
-      </li>
-      <li class="bar warning" style="height: 75%;" title="75">
-        <div class="percent">75<span>%</span></div>
-        <div class="description">Cows that think they're Yetis</div>
-      </li>
-      <li class="bar alert" style="height: 40%;" title="40">
-        <div class="percent">40<span>%</span></div>
-        <div class="description">Who knows</div>
-      </li>
+      <!--<li class="bar secondary" style="height: 90%;" title="90">-->
+        <!--<div class="percent">90<span>%</span></div>-->
+        <!--<div class="description">ZURBians</div>-->
+      <!--</li>-->
     </ul>
 
+    <!--break line skip-->
+    <br><br>
 
+    <script  type="text/javascript"  charset="utf-8">
+        (function(w,d,t,f){  w[f]=w[f]||function(c,k,n){s=w[f],k=s['k']=(s['k']||(k?('&k='+k):''));s['c']=
+            c=(c  instanceof  Array)?c:[c];s['n']=n=n||0;L=d.createElement(t),e=d.getElementsByTagName(t)[0];
+            L.async=1;L.src='//feed.aqicn.org/feed/'+(c[n].city)+'/'+(c[n].lang||'')+'/feed.v1.js?n='+n+k;
+            e.parentNode.insertBefore(L,e);  };  })(  window,document,'script','_aqiFeed'  );
+    </script>
 
+    <span  id="city-aqi-container"></span>
+
+    <p id="demo"></p>
+    <script>
+        var cityName = "<%= globalKeyword %>";
+        document.getElementById("demo").innerHTML = cityName;
+    </script>
+
+    <script  type="text/javascript"  charset="utf-8">
+        _aqiFeed({  display: "%details", container:"city-aqi-container",  city: document.getElementById("demo").innerHTML = cityName  });
+    </script>
   </body>
 </html>
