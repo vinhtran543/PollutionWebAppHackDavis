@@ -18,7 +18,7 @@ h1
   background-color: black; opacity: 0.99;
   margin: 0px;
   padding: 0px;
-  height: 10%;
+  height: 12%;
   width: 100%;
   position: fixed;
   z-index: 1;
@@ -28,27 +28,44 @@ h1
   padding-top: 20px;
 }
 
+.index-top
+{
+  padding: 0;
+  margin: 0 auto;
+  background-image: url('../images/cityimage.jpg');
+  /* Full height */
+  height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/********************** Split Screen Start ************************/
 /* Split the screen in half */
 .split {
-  height: 80%;
+  height: 100%;
   width: 50%;
   position: absolute;
-  z-index: 1;
-  top: 40%;
+  z-index: 0;
+  /*top: 40%;*/
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 5%;
 }
 
 /* Control the left side */
 .left {
   left: 0;
-  background-color: white;
+  height:100%;
+background-color: #3adb76; opacity: 0.5;
 }
 
 /* Control the right side */
 .right {
   right: 0;
-  background-color: white;
+  height: 100%;
+  background-color: red; opacity: 0.5;
 }
 
 /* If you want the content centered horizontally and vertically */
@@ -65,8 +82,9 @@ h1
   width: 150px;
   border-radius: 50%;
 }
+/********************** Split Screen Ends ************************/
 
-
+/********************** Bar Graph Begins ************************/
 a {
   color: #00B7FF;
 }
@@ -204,10 +222,14 @@ a {
   background: linear-gradient(#d67060, #cc4b37 70%);
 }
 
+/********************** Bar Graph Ends ************************/
+
 input
 {
   width: 100%;
 }
+
+
 
 
 

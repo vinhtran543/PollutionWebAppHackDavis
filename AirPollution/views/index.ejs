@@ -5,6 +5,7 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
+<div class = "index-top" id = "index-top">
   <div class ="top">
     <% include templates/header.ejs%>
     <h1><%= title %></h1>
@@ -14,14 +15,14 @@
     <br><br><br><br><br><br><br><br>
 
     <form action="http://127.0.0.1:8080/myaction" method="post">
-      <input type="text" name="search">
+      <input type="text" name="search" placeholder="Enter City Name...">
       <input type="submit">
     </form>
 
-    <!--break line skip-->
-    <br><br><br><br><br>
 
     <div class="split left">
+
+      <br><br><br><br> <!--space for percent text on top of bar graph-->
       <!--bar graph-->
       <ul class="bar-graph">
         <li class="bar-graph-axis">
@@ -63,7 +64,5 @@
           _aqiFeed({  display: "%details", container:"city-aqi-container",  city: document.getElementById("demo").innerHTML = cityName  });
       </script>
     </div>
-
-
-  </body>
+</div>
 </html>
