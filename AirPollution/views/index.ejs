@@ -12,7 +12,7 @@
   </div>
 
     <!--break line skip-->
-    <br><br><br><br><br><br><br><br>
+    <br><br><br><br><br>
 
     <form action="http://127.0.0.1:8080/myaction" method="post">
       <input type="text" name="search" placeholder="Enter City Name...">
@@ -21,8 +21,7 @@
 
 
     <div class="split left">
-
-      <br><br><br><br> <!--space for percent text on top of bar graph-->
+      <br><br> <!--space for percent text on top of bar graph-->
       <!--bar graph-->
       <ul class="bar-graph">
         <li class="bar-graph-axis">
@@ -43,8 +42,8 @@
         <!--</li>-->
       </ul>
     </div>
-
     <div class="split right">
+      <!----------------- AQI Widget API START ------------------->
       <script  type="text/javascript"  charset="utf-8">
           (function(w,d,t,f){  w[f]=w[f]||function(c,k,n){s=w[f],k=s['k']=(s['k']||(k?('&k='+k):''));s['c']=
               c=(c  instanceof  Array)?c:[c];s['n']=n=n||0;L=d.createElement(t),e=d.getElementsByTagName(t)[0];
@@ -54,15 +53,18 @@
 
       <span  id="city-aqi-container"></span>
 
-      <p id="demo"></p>
+      <!--<div id="demo"></div>-->
       <script>
-          var cityName = "<%= globalKeyword %>";
-          document.getElementById("demo").innerHTML = cityName;
+          var cityName = "<%= globalKeyword %>";  //store city name from EJS to html variable
+          //document.getElementById("demo").innerHTML = cityName;
       </script>
 
       <script  type="text/javascript"  charset="utf-8">
-          _aqiFeed({  display: "%details", container:"city-aqi-container",  city: document.getElementById("demo").innerHTML = cityName  });
+          _aqiFeed({  display: "%details", container:"city-aqi-container",  city: cityName  });
       </script>
+      <!----------------- AQI Widget API END ------------------->
+      <br><br>
+      <img src="/images/aqitable2.jpg" style="width:600px;height:300px;">
     </div>
 </div>
 </html>

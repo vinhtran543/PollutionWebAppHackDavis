@@ -32,14 +32,13 @@ h1
 {
   padding: 0;
   margin: 0 auto;
+  min-height : 100%; /*allows background image to cover entire page and not show white space when zoomed out*/
+  /*background-color: gold;*/
+  text-align: center;
+  font-size: 20px;
   background-image: url('../images/cityimage.jpg');
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
 }
 
 /********************** Split Screen Start ************************/
@@ -47,25 +46,29 @@ h1
 .split {
   height: 100%;
   width: 50%;
-  position: absolute;
+  /*position: absolute;*/
   z-index: 0;
   /*top: 40%;*/
   overflow-x: hidden;
-  padding-top: 5%;
+  padding-top: 0;
+  overflow: hidden;
 }
 
 /* Control the left side */
 .left {
   left: 0;
-  height:100%;
-background-color: #3adb76; opacity: 0.5;
+  height:50%;
+  overflow: hidden;
+  /*background-color: #3adb76; opacity: 0.5;*/
 }
 
 /* Control the right side */
 .right {
   right: 0;
-  height: 100%;
-  background-color: red; opacity: 0.5;
+  height: 50%;
+  /*background-color: red; opacity: 0.5;*/
+  transform: translate(500px,-450px);
+  overflow: hidden;
 }
 
 /* If you want the content centered horizontally and vertically */
@@ -177,7 +180,7 @@ a {
 
 @media print, screen and (min-width: 40em) {
   .bar-graph .percent {
-    font-size: 3.875rem;
+    font-size: 2rem;
   }
 }
 
@@ -191,7 +194,7 @@ a {
   text-transform: uppercase;
   width: 100%;
   font-size: 4px;
-  bottom: -50px;
+  bottom: 0px;
   position: absolute;
   font-size: 1rem;
   overflow: hidden;
