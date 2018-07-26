@@ -5,66 +5,68 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 
-<div class = "index-top" id = "index-top">
-  <div class ="top">
-    <% include templates/header.ejs%>
-    <h1><%= title %></h1>
+<body>
+  <div class = "backGround" id = "backGround">
+    <div class ="topBanner">
+      <% include templates/header.ejs%>
+      <h1><%= title %></h1>
+    </div>
+
+      <!--break line skip-->
+      <br><br><br><br><br>
+
+      <form action="http://127.0.0.1:8080/myaction" method="post">
+        <input type="text" name="search" placeholder="Enter City Name...">
+        <input type="submit">
+      </form>
+
+
+      <div class="split left">
+        <br><br> <!--space for percent text on top of bar graph-->
+        <!--bar graph-->
+        <ul class="bar-graph">
+          <li class="bar-graph-axis">
+            <div class="bar-graph-label">300</div>
+            <div class="bar-graph-label">240</div>
+            <div class="bar-graph-label">180</div>
+            <div class="bar-graph-label">120</div>
+            <div class="bar-graph-label">60</div>
+            <div class="bar-graph-label">0</div>
+          </li>
+          <li class="bar primary" style="height: <%= barHeightEJStoHtml %>%;" title="First City">
+            <div class="percent"><%= aqiEJStoHtml %><span><br><%= barHeightEJStoHtml %>%</span></div>
+            <div class="description"><%= globalKeyword %></div>
+          </li>
+          <!--<li class="bar secondary" style="height: 90%;" title="90">-->
+          <!--<div class="percent">90<span>%</span></div>-->
+          <!--<div class="description">ZURBians</div>-->
+          <!--</li>-->
+        </ul>
+      </div>
+      <div class="split right">
+        <!----------------- AQI Widget API START ------------------->
+        <script  type="text/javascript"  charset="utf-8">
+            (function(w,d,t,f){  w[f]=w[f]||function(c,k,n){s=w[f],k=s['k']=(s['k']||(k?('&k='+k):''));s['c']=
+                c=(c  instanceof  Array)?c:[c];s['n']=n=n||0;L=d.createElement(t),e=d.getElementsByTagName(t)[0];
+                L.async=1;L.src='//feed.aqicn.org/feed/'+(c[n].city)+'/'+(c[n].lang||'')+'/feed.v1.js?n='+n+k;
+                e.parentNode.insertBefore(L,e);  };  })(  window,document,'script','_aqiFeed'  );
+        </script>
+
+        <span  id="city-aqi-container"></span>
+
+        <!--<div id="demo"></div>-->
+        <script>
+            var cityName = "<%= globalKeyword %>";  //store city name from EJS to html variable
+            //document.getElementById("demo").innerHTML = cityName;
+        </script>
+
+        <script  type="text/javascript"  charset="utf-8">
+            _aqiFeed({  display: "%details", container:"city-aqi-container",  city: cityName  });
+        </script>
+        <!----------------- AQI Widget API END ------------------->
+        <br><br>
+        <img src="/images/aqitable2.jpg" style="width:600px;height:300px;">
+      </div>
   </div>
-
-    <!--break line skip-->
-    <br><br><br><br><br>
-
-    <form action="http://127.0.0.1:8080/myaction" method="post">
-      <input type="text" name="search" placeholder="Enter City Name...">
-      <input type="submit">
-    </form>
-
-
-    <div class="split left">
-      <br><br> <!--space for percent text on top of bar graph-->
-      <!--bar graph-->
-      <ul class="bar-graph">
-        <li class="bar-graph-axis">
-          <div class="bar-graph-label">300</div>
-          <div class="bar-graph-label">240</div>
-          <div class="bar-graph-label">180</div>
-          <div class="bar-graph-label">120</div>
-          <div class="bar-graph-label">60</div>
-          <div class="bar-graph-label">0</div>
-        </li>
-        <li class="bar primary" style="height: <%= barHeightEJStoHtml %>%;" title="First City">
-          <div class="percent"><%= aqiEJStoHtml %><span><br><%= barHeightEJStoHtml %>%</span></div>
-          <div class="description"><%= globalKeyword %></div>
-        </li>
-        <!--<li class="bar secondary" style="height: 90%;" title="90">-->
-        <!--<div class="percent">90<span>%</span></div>-->
-        <!--<div class="description">ZURBians</div>-->
-        <!--</li>-->
-      </ul>
-    </div>
-    <div class="split right">
-      <!----------------- AQI Widget API START ------------------->
-      <script  type="text/javascript"  charset="utf-8">
-          (function(w,d,t,f){  w[f]=w[f]||function(c,k,n){s=w[f],k=s['k']=(s['k']||(k?('&k='+k):''));s['c']=
-              c=(c  instanceof  Array)?c:[c];s['n']=n=n||0;L=d.createElement(t),e=d.getElementsByTagName(t)[0];
-              L.async=1;L.src='//feed.aqicn.org/feed/'+(c[n].city)+'/'+(c[n].lang||'')+'/feed.v1.js?n='+n+k;
-              e.parentNode.insertBefore(L,e);  };  })(  window,document,'script','_aqiFeed'  );
-      </script>
-
-      <span  id="city-aqi-container"></span>
-
-      <!--<div id="demo"></div>-->
-      <script>
-          var cityName = "<%= globalKeyword %>";  //store city name from EJS to html variable
-          //document.getElementById("demo").innerHTML = cityName;
-      </script>
-
-      <script  type="text/javascript"  charset="utf-8">
-          _aqiFeed({  display: "%details", container:"city-aqi-container",  city: cityName  });
-      </script>
-      <!----------------- AQI Widget API END ------------------->
-      <br><br>
-      <img src="/images/aqitable2.jpg" style="width:600px;height:300px;">
-    </div>
-</div>
+</body>
 </html>

@@ -7,12 +7,34 @@ html, body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+div.centerAlign {
+  text-align: center;
+}
+
+div.leftAlign {
+  text-align: left;
+}
+
+div.rightAlign {
+  text-align: right;
+}
+
+div.justify {
+  text-align: justify;
+}
+
 h1
 {
   color: white;
 }
 
-.top
+text1
+{
+  text-align: left;
+  font-size: 20px;
+}
+
+.topBanner
 {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: black; opacity: 0.99;
@@ -28,7 +50,7 @@ h1
   padding-top: 20px;
 }
 
-.index-top
+.backGround
 {
   padding: 0;
   margin: 0 auto;
@@ -39,6 +61,13 @@ h1
   background-image: url('../images/cityimage.jpg');
   background-size: cover;
   background-position: center center;
+}
+
+.about-body
+{
+  padding-top: 15%;
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
 /********************** Split Screen Start ************************/

@@ -1,12 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>About Page </title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <% include templates/header.ejs%>
-    <h1><%= title %></h1>
-    <p> About page</p>
+  <div class = "backGround" id = "backGround">
+    <div class ="topBanner">
+        <% include templates/header.ejs%>
+      <h1><%= title %></h1>
+    </div>
+
+    <div class = "about-body">
+      <div class = "leftAlign">
+      <text1>Aqi is an air quality index that is used internationally to measure the cleanliness
+      and how polluted the air is. The Aqi (Air quality index) is measured by the EPA
+      (United states Enviromental Protection Agency). Air pollutants such as carbon monoxide,
+      ozone, particle pollution, sulfur dioxide, and nitrogen dioxide are measured.
+        The higher the Aqi levels the greater health implications and danger it poses.
+      <br><br>
+        This webapp uses API from World Air Quality Index Project. It uses real time Aqi data
+        to display Aqi levels in an easy to read and understand format and display. The purpose
+        of this project is to spread awareness over the health concerns of different levels of
+        pollutants in our cities's air, thus making it transparent to the public.
+      </text1>
+      </div>
+    </div>
+  </div>
   </body>
 </html>
