@@ -13,7 +13,8 @@ var app = express();
 //Note that in version 4 of express, express.bodyParser() was
 //deprecated in favor of a separate 'body-parser' module.
 app.use(bodyParser.urlencoded({ extended: true }));
-app.post('/myaction', function(req, res) {
+// app.post('/myaction', function(req, res) {
+router.post('/', function(req, res) {
     globalKeyword = req.body.search;
     console.log("In the body of app.post()");
     console.log("keyword search: " + globalKeyword);
@@ -22,27 +23,28 @@ app.post('/myaction', function(req, res) {
     app.get(createbargraph(globalKeyword, req, res));
 });
 
-app.listen(8080, function() {
-    console.log('Server running at http://127.0.0.1:8080/');
-});
+// app.listen(8000, function() {
+//     console.log('Server running at http://127.0.0.1:8000/');
+// });
 
 /////////////// API request for website http://aqicn.org/api/ /////////////////////////////////////////
 var request = require('request');
 var cheerio = require('cheerio');
 globalaqi = "";
 globalbarHeight = "";
+globalKeyword = "beijing";
 
 //sample url
 //https://api.waqi.info/search/?token=***REMOVED***=beijing
 //demo url
 //request('https://api.waqi.info/search/?token=demo&keyword=beijing', function(error, response, body){
 //var keyword = "beijing";
-globalKeyword = "beijing";
-createbargraphFirstTime(globalKeyword);
+tempKeyword = "beijing";
+createbargraphFirstTime(tempKeyword);
 
-function createbargraphFirstTime(globalKeyword)
+function createbargraphFirstTime(tempKeyword)
 {
-    request('https://api.waqi.info/search/?token=***REMOVED***=' + globalKeyword, function(error, response, body){
+    request('https://api.waqi.info/search/?token=***REMOVED***=' + tempKeyword, function(error, response, body){
         if(!error && response.statusCode == 200){
             var $ = cheerio.load(body);
             //console.log(body);
@@ -82,7 +84,8 @@ function createbargraph(globalKeyword, req, res)
             // console.log("barheight: " + barHeight);
 
             //redirect call to refresh page
-            res.redirect("http://localhost:3000/");
+            //res.redirect("http://localhost:3000/");
+            res.redirect("http://vtranportfolio.me");
         }
     });
 }
