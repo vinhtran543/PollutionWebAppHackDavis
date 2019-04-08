@@ -52,7 +52,7 @@ function createbargraphFirstTime(tempKeyword)
             var json = body;
             console.log(json);
             obj = JSON.parse(json);
-            var aqiVar = obj.data[0].aqi; //aqi data is at array 0 of data in JSON
+            var aqiVar = obj.data[3].aqi; //aqi data is at array 0 of data in JSON
             //console.log(obj.data[0].aqi);
             console.log(aqiVar);
             globalaqi = aqiVar;
@@ -74,18 +74,33 @@ function createbargraph(globalKeyword, req, res)
             var json = body;
             console.log(json);
             obj = JSON.parse(json);
-            var aqiVar = obj.data[0].aqi; //aqi data is at array 0 of data in JSON
-            //console.log(obj.data[0].aqi);
-            console.log(aqiVar);
-            globalaqi = aqiVar;
-            globalbarHeight = Math.round(aqiVar / 3); //divide by 3 since scale is 300% not 100% for bar graph
 
-            // globalbarHeight = globalaqi / 2;
-            // console.log("barheight: " + barHeight);
+            console.log(obj.data);
 
-            //redirect call to refresh page
-            //res.redirect("http://localhost:3000/");
-            res.redirect("http://vtranportfolio.me");
+            if(obj.data == 0)   //if user search for invalid or empty string name, obj.data should be empty bracket
+            {
+                console.log("obj data is null");
+                res.redirect("http://vtranportfolio.me");
+            }
+            else    //generate bar graph 
+            {
+                //var json = body;
+                console.log(json);
+                obj = JSON.parse(json);
+
+                var aqiVar = obj.data[0].aqi; //aqi data is at array 0 of data in JSON
+                //console.log(obj.data[0].aqi);
+                console.log(aqiVar);
+                globalaqi = aqiVar;
+                globalbarHeight = Math.round(aqiVar / 3); //divide by 3 since scale is 300% not 100% for bar graph
+
+                // globalbarHeight = globalaqi / 2;
+                // console.log("barheight: " + barHeight);
+
+                //redirect call to refresh page
+                //res.redirect("http://localhost:3000/");
+                res.redirect("http://vtranportfolio.me");
+            }
         }
     });
 }
