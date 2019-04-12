@@ -80,7 +80,7 @@ function createbargraph(globalKeyword, req, res)
             if(obj.data == 0)   //if user search for invalid or empty string name, obj.data should be empty bracket
             {
                 console.log("obj data is null");
-                res.redirect("http://vtranportfolio.me");
+                res.redirect("http://webapp.vtranportfolio.me");
             }
             else    //generate bar graph 
             {
@@ -99,7 +99,7 @@ function createbargraph(globalKeyword, req, res)
 
                 //redirect call to refresh page
                 //res.redirect("http://localhost:3000/");
-                res.redirect("http://vtranportfolio.me");
+                res.redirect("http://webapp.vtranportfolio.me");
             }
         }
     });
