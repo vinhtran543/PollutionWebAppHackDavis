@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
 //     console.log('Server running at http://127.0.0.1:8000/');
 // });
 
-/////////////// API request for website http://aqicn.org/api/ /////////////////////////////////////////
+/////////////// API request for website http://aqicn.org/api/ ///////////////////////////////////////
 var request = require('request');
 var cheerio = require('cheerio');
 globalaqi = "";
