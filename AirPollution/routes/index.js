@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+require('dotenv').config();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -38,11 +39,12 @@ globalKeyword = "beijing";
 //request('https://api.waqi.info/search/?token=demo&keyword=beijing', function(error, response, body){
 //var keyword = "beijing";
 tempKeyword = "beijing";
+API_KEY = process.env.API_KEY;
 createbargraphFirstTime(tempKeyword);
 
 function createbargraphFirstTime(tempKeyword)
 {
-    request('https://api.waqi.info/search/?token==' + tempKeyword, function(error, response, body){
+    request('https://api.waqi.info/search/?token=' + API_KEY + '=' + tempKeyword, function(error, response, body){
         if(!error && response.statusCode == 200){
             var $ = cheerio.load(body);
             //console.log(body);
@@ -64,7 +66,7 @@ function createbargraphFirstTime(tempKeyword)
 
 function createbargraph(globalKeyword, req, res)
 {
-    request('https://api.waqi.info/search/?token==' + globalKeyword, function(error, response, body){
+    request('https://api.waqi.info/search/?token=' + API_KEY + '=' + globalKeyword, function(error, response, body){
         if(!error && response.statusCode == 200){
             var $ = cheerio.load(body);
             //console.log(body);
