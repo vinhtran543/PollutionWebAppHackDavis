@@ -34,8 +34,6 @@ globalaqi = "";
 globalbarHeight = "";
 globalKeyword = "beijing";
 
-//sample url
-//https://api.waqi.info/search/?token=***REMOVED***=beijing
 //demo url
 //request('https://api.waqi.info/search/?token=demo&keyword=beijing', function(error, response, body){
 //var keyword = "beijing";
@@ -44,7 +42,7 @@ createbargraphFirstTime(tempKeyword);
 
 function createbargraphFirstTime(tempKeyword)
 {
-    request('https://api.waqi.info/search/?token=***REMOVED***=' + tempKeyword, function(error, response, body){
+    request('https://api.waqi.info/search/?token==' + tempKeyword, function(error, response, body){
         if(!error && response.statusCode == 200){
             var $ = cheerio.load(body);
             //console.log(body);
@@ -66,7 +64,7 @@ function createbargraphFirstTime(tempKeyword)
 
 function createbargraph(globalKeyword, req, res)
 {
-    request('https://api.waqi.info/search/?token=***REMOVED***=' + globalKeyword, function(error, response, body){
+    request('https://api.waqi.info/search/?token==' + globalKeyword, function(error, response, body){
         if(!error && response.statusCode == 200){
             var $ = cheerio.load(body);
             //console.log(body);
