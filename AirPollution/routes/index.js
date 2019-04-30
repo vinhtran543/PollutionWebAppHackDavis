@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.post('/myaction', function(req, res) {
 router.post('/', function(req, res) {
     globalKeyword = req.body.search;
-    console.log("In the body of app.post()");
-    console.log("keyword search: " + globalKeyword);
+    //console.log("In the body of app.post()"); Debugging 
+    //console.log("keyword search: " + globalKeyword); Debugging 
 
     //function call to createbargraph graph and refresh page with changes
     app.get(createbargraph(globalKeyword, req, res));
@@ -50,11 +50,11 @@ function createbargraphFirstTime(tempKeyword)
             //console.log(body);
 
             var json = body;
-            console.log(json);
+            //console.log(json); Debugging 
             obj = JSON.parse(json);
             var aqiVar = obj.data[3].aqi; //aqi data is at array 0 of data in JSON
             //console.log(obj.data[0].aqi);
-            console.log(aqiVar);
+            //console.log(aqiVar); Debugging 
             globalaqi = aqiVar;
             globalbarHeight = Math.round(aqiVar / 3); //divide by 3 since scale is 300% not 100% for bar graph
 
@@ -72,25 +72,25 @@ function createbargraph(globalKeyword, req, res)
             //console.log(body);
 
             var json = body;
-            console.log(json);
+            //console.log(json); Debugging 
             obj = JSON.parse(json);
 
-            console.log(obj.data);
+            //console.log(obj.data); Debugging 
 
             if(obj.data == 0)   //if user search for invalid or empty string name, obj.data should be empty bracket
             {
-                console.log("obj data is null");
+                //console.log("obj data is null"); Debugging 
                 res.redirect("http://webapp.vtranportfolio.me");
             }
             else    //generate bar graph 
             {
                 //var json = body;
-                console.log(json);
+                //console.log(json); Debugging 
                 obj = JSON.parse(json);
 
                 var aqiVar = obj.data[0].aqi; //aqi data is at array 0 of data in JSON
                 //console.log(obj.data[0].aqi);
-                console.log(aqiVar);
+                //console.log(aqiVar); Debugging 
                 globalaqi = aqiVar;
                 globalbarHeight = Math.round(aqiVar / 3); //divide by 3 since scale is 300% not 100% for bar graph
 
