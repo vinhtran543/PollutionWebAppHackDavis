@@ -16,12 +16,12 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.post('/myaction', function(req, res) {
 router.post('/', function(req, res) {
-    globalKeyword = req.body.search;
+    var searchedKeyword = req.body.search;
     //console.log("In the body of app.post()"); Debugging 
     //console.log("keyword search: " + globalKeyword); Debugging 
 
     //function call to createbargraph graph and refresh page with changes
-    app.get(createbargraph(globalKeyword, req, res));
+    app.get(createbargraph(searchedKeyword, req, res));
 });
 
 // app.listen(8000, function() {
@@ -34,14 +34,16 @@ var cheerio = require('cheerio');
 globalaqi = "";
 globalbarHeight = "";
 globalKeyword = "beijing";
+API_KEY = process.env.API_KEY;
 
 //demo url
 //request('https://api.waqi.info/search/?token=demo&keyword=beijing', function(error, response, body){
 //var keyword = "beijing";
+
 tempKeyword = "beijing";
-API_KEY = process.env.API_KEY;
 createbargraphFirstTime(tempKeyword);
 
+//create bargraph for first time when webpage first starts
 function createbargraphFirstTime(tempKeyword)
 {
     request('https://api.waqi.info/search/?token=' + API_KEY + '=' + tempKeyword, function(error, response, body){
@@ -52,7 +54,7 @@ function createbargraphFirstTime(tempKeyword)
             var json = body;
             //console.log(json); Debugging 
             obj = JSON.parse(json);
-            var aqiVar = obj.data[3].aqi; //aqi data is at array 0 of data in JSON
+            var aqiVar = obj.data[0].aqi; //aqi data is at array 0 of data in JSON
             //console.log(obj.data[0].aqi);
             //console.log(aqiVar); Debugging 
             globalaqi = aqiVar;
@@ -64,9 +66,9 @@ function createbargraphFirstTime(tempKeyword)
     });
 }
 
-function createbargraph(globalKeyword, req, res)
+function createbargraph(searchedKeyword, req, res)
 {
-    request('https://api.waqi.info/search/?token=' + API_KEY + '=' + globalKeyword, function(error, response, body){
+    request('https://api.waqi.info/search/?token=' + API_KEY + '=' + searchedKeyword, function(error, response, body){
         if(!error && response.statusCode == 200){
             var $ = cheerio.load(body);
             //console.log(body);
@@ -99,6 +101,7 @@ function createbargraph(globalKeyword, req, res)
 
                 //redirect call to refresh page
                 //res.redirect("http://localhost:3000/");
+                globalKeyword = searchedKeyword; //if keyword exists, set keyword so that Html can use it
                 res.redirect("http://webapp.vtranportfolio.me");
             }
         }
